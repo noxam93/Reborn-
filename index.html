@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RB — ReBorN tracker</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--line:#30363d;--ink:#e6edf3;--muted:#8b949e;--gold:#d4a017;--ok:#3fb950;--off:#484f58;--acc:#1f6feb;--red:#f85149}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:14px}
+h1{font-size:22px;margin:6px 0 2px}
+.sub{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:12px 0}
+.pill{display:inline-block;background:var(--acc);color:#fff;border-radius:20px;padding:2px 10px;font-size:12px;font-weight:600;margin-right:6px}
+.tblwrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{color:var(--muted);font-weight:600}
+.r{text-align:right}
+tr:hover td{background:rgba(212,160,23,.06)}
+.tip{color:var(--muted);font-size:12px;margin-top:10px;line-height:1.5}
+a{color:var(--gold)}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.stat{background:#0d1117;border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-width:110px}
+.stat b{display:block;font-size:15px;color:var(--gold)}
+.stat span{font-size:11px;color:var(--muted)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
+.dot.on{background:var(--ok)}.dot.off{background:var(--off)}
+.bar{display:inline-flex;gap:3px;vertical-align:middle}
+.bar i{width:10px;height:14px;border-radius:2px;background:var(--off);display:inline-block}
+.bar i.on{background:var(--ok)}
+.bar i.miss{background:#21262d;border:1px dashed var(--line)}
+.delta-pos{color:var(--ok)}.delta-neg{color:var(--red)}
+#status{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>⚔️ RB — ReBorN</h1>
+  <div class="sub">Tracker sojuszu <b>- ReBorN -</b> · AID <b>115</b> · E4K Polska 1</div>
+  <div id="status">Ładowanie data/latest.json…</div>
+
+  <div class="card" id="summary"></div>
+
+  <div class="card">
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Gracz</th>
+            <th>Aktywność</th>
+            <th class="r">Δ Honor</th>
+            <th class="r">Δ Moc</th>
+            <th class="r">Honor</th>
+            <th class="r">Moc</th>
+            <th class="r">Łupy (CF)</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <p class="tip">
+      Zielona kropka = zmiana honoru / mocy / łupów względem poprzedniego snapshotu (Action co ~10–15 min).<br>
+      Źródło: <code>empire-api.fly.dev</code> → <code>ain</code> AID 115 · zone <code>EmpirefourkingdomsExGG2_3</code>.
+    </p>
+  </div>
+</div>
+<script>
+function fmt(n){
+  if(n==null||isNaN(n)) return '—';
+  return Math.round(n).toLocaleString('pl-PL');
+}
+function delta(a,b){
+  if(a==null||b==null) return null;
+  return a-b;
+}
+function deltaCell(d){
+  if(d==null||d===0) return '<td class="r">—</td>';
+  const cls = d>0 ? 'delta-pos' : 'delta-neg';
+  const sign = d>0 ? '+' : '';
+  return `<td class="r ${cls}">${sign}${fmt(d)}</td>`;
+}
+
+async function load(){
+  const status = document.getElementById('status');
+  try{
+    const res = await fetch('data/latest.json?t='+Date.now());
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data = await res.json();
+    const prev = data.prev_players || {};
+    const players = data.players || [];
+    const when = data.fetched_at ? new Date(data.fetched_at).toLocaleString('pl-PL') : '?';
+
+    status.textContent = `Snapshot: ${when} · ${players.length} graczy`;
+
+    document.getElementById('summary').innerHTML = `
+      <div>
+        <span class="pill">${players.length} graczy</span>
+        <span class="pill">AID ${data.aid||115}</span>
+        <span class="pill">${data.server_label||'E4K PL1'}</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>${fmt(data.total_might)}</b><span>suma mocy</span></div>
+        <div class="stat"><b>#1</b><span>ranking serwera</span></div>
+        <div class="stat"><b>${data.aid||115}</b><span>AID sojuszu</span></div>
+      </div>`;
+
+    const tbody = document.getElementById('tbody');
+    tbody.innerHTML = players.map((p,i)=>{
+      const old = prev[String(p.oid)] || prev[p.oid] || null;
+      const dH = old ? delta(p.honor, old.honor) : null;
+      const dM = old ? delta(p.might, old.might) : null;
+      const dL = old ? delta(p.loot_current, old.loot_current) : null;
+      const active = (dH&&dH!==0) || (dM&&dM!==0) || (dL&&dL!==0);
+      const dot = active
+        ? '<span class="dot on" title="aktywny od ostatniego snapshotu"></span>'
+        : '<span class="dot off" title="bez zmian"></span>';
+      return `<tr>
+        <td>${i+1}</td>
+        <td>${dot}<b>${p.name||'?'}</b></td>
+        <td>${active?'🟢 aktywny':'—'}</td>
+        ${deltaCell(dH)}
+        ${deltaCell(dM)}
+        <td class="r">${fmt(p.honor)}</td>
+        <td class="r">${fmt(p.might)}</td>
+        <td class="r">${fmt(p.loot_current)}</td>
+      </tr>`;
+    }).join('');
+  }catch(e){
+    status.textContent = 'Błąd ładowania data/latest.json: '+e.message;
+  }
+}
+load();
+</script>
+</body>
+</html>

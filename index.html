@@ -3,306 +3,306 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RB — ReBorN tracker</title>
+<title>RB — ReBorN hub</title>
 <style>
-:root{--bg:#0d1117;--card:#161b22;--line:#30363d;--ink:#e6edf3;--muted:#8b949e;--gold:#d4a017;--ok:#3fb950;--off:#30363d;--miss:#21262d;--acc:#1f6feb;--red:#f85149}
+:root{--bg:#0b0f14;--card:#141a22;--line:#2a3340;--ink:#e8eef6;--muted:#8b97a8;--gold:#e0b84a;--ok:#3dd68c;--off:#3a4555;--miss:#1c2330;--acc:#3b82f6;--red:#f87171;--violet:#a78bfa}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.45 system-ui,Segoe UI,Roboto,sans-serif}
-.wrap{max-width:1200px;margin:0 auto;padding:12px}
-h1{font-size:20px;margin:4px 0}
-.sub{color:var(--muted);font-size:12px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}
+.wrap{max-width:1180px;margin:0 auto;padding:12px 12px 40px}
+h1{font-size:20px;margin:0 0 2px}.sub{color:var(--muted);font-size:12px}
+nav.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 8px;position:sticky;top:0;z-index:20;background:rgba(11,15,20,.92);backdrop-filter:blur(8px);padding:8px 0;border-bottom:1px solid var(--line)}
+nav.tabs button{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:7px 12px;font-size:12px;cursor:pointer}
+nav.tabs button.on{background:var(--acc);border-color:var(--acc);font-weight:600}
+.panel{display:none}.panel.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:10px 0}
+.hub{display:grid;gap:10px;grid-template-columns:1fr}
+@media(min-width:640px){.hub{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.hub{grid-template-columns:1fr 1fr 1fr}}
+.hub a.cardlink{display:block;text-decoration:none;color:inherit;background:linear-gradient(160deg,#161d28,#121820);border:1px solid var(--line);border-radius:14px;padding:14px;transition:.15s}
+.hub a.cardlink:hover{border-color:var(--gold);transform:translateY(-1px)}
+.hub h3{margin:0 0 6px;font-size:15px;color:var(--gold)}
+.hub p{margin:0;color:var(--muted);font-size:12px}
+.hub ul{margin:8px 0 0;padding-left:16px;font-size:12px}
+.hub .tag{display:inline-block;font-size:10px;background:#1e293b;color:var(--violet);border-radius:6px;padding:2px 6px;margin-bottom:6px}
 .pill{display:inline-block;background:var(--acc);color:#fff;border-radius:16px;padding:2px 9px;font-size:11px;font-weight:600;margin:2px 4px 2px 0}
-.pill.ok{background:#238636}.pill.warn{background:#9e6a03}
-.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
+.pill.ok{background:#15803d}.pill.warn{background:#a16207}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin-top:8px}
 .controls label{font-size:11px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
-select{background:#0d1117;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:13px}
+select,button.btn{background:#0d1219;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:13px}
+button.btn{cursor:pointer;background:var(--acc);border-color:var(--acc);color:#fff}
 .tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 table{border-collapse:collapse;width:100%;font-size:12px}
 th,td{padding:6px 7px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
-th{color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--card);z-index:1}
-.r{text-align:right}
-tr:hover td{background:rgba(212,160,23,.05)}
-.bar{display:inline-flex;gap:2px;vertical-align:middle;height:16px;align-items:center}
-.bar i{width:9px;height:14px;border-radius:2px;background:var(--off);display:inline-block}
-.bar i.on{background:var(--ok)}
-.bar i.miss{background:var(--miss);border:1px dashed #484f58;width:7px;height:12px}
+th{color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--card)}
+.r{text-align:right}tr:hover td{background:rgba(224,184,74,.05)}
+.bar{display:inline-flex;gap:2px;vertical-align:middle;align-items:center}
+.bar i{width:8px;height:13px;border-radius:2px;background:var(--off);display:inline-block}
+.bar i.on{background:var(--ok)}.bar i.miss{background:var(--miss);border:1px dashed #3a4555;width:6px;height:11px}
 .delta-pos{color:var(--ok);font-weight:600}.delta-neg{color:var(--red);font-weight:600}
 .tip{color:var(--muted);font-size:11px;line-height:1.55;margin-top:8px}
-.hourgrid{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;font-size:10px;text-align:center}
-@media(min-width:600px){.hourgrid{grid-template-columns:repeat(24,1fr)}}
-.hourgrid div{background:#0d1117;border:1px solid var(--line);border-radius:4px;padding:4px 2px}
-.hourgrid .v{color:var(--gold);font-weight:700;font-size:12px}
-.hourgrid .h{color:var(--muted)}
-#status{font-size:12px;color:var(--muted);margin:4px 0 8px}
-details{margin-top:8px}
-summary{cursor:pointer;color:var(--gold);font-size:12px}
+.hourgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;font-size:10px;text-align:center}
+@media(min-width:520px){.hourgrid{grid-template-columns:repeat(12,1fr)}}
+@media(min-width:900px){.hourgrid{grid-template-columns:repeat(24,1fr)}}
+.hourgrid div{background:#0d1219;border:1px solid var(--line);border-radius:4px;padding:4px 2px}
+.hourgrid .v{color:var(--gold);font-weight:700;font-size:12px}.hourgrid .h{color:var(--muted)}
+#status{font-size:12px;color:var(--muted);margin:4px 0}
+.spy-grid{display:grid;gap:8px;grid-template-columns:1fr}
+@media(min-width:600px){.spy-grid{grid-template-columns:1fr 1fr}}
+.spy-grid a{display:block;text-decoration:none;color:inherit;background:#0d1219;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.spy-grid a:hover{border-color:var(--acc)}.spy-grid b{color:var(--gold);font-size:13px}
+.spy-grid span{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.iframe-wrap{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#000}
+.iframe-wrap iframe{width:100%;height:70vh;border:0;min-height:420px}
+.note{font-size:11px;color:var(--muted);margin-top:6px}
+details summary{cursor:pointer;color:var(--gold);font-size:12px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>⚔️ RB — ReBorN</h1>
-  <div class="sub">Tracker sojuszu <b>- ReBorN -</b> · AID <b>115</b> · E4K Polska 1</div>
-  <div id="status">Ładowanie…</div>
+  <header>
+    <h1>⚔️ RB — ReBorN hub</h1>
+    <div class="sub">Sojusz <b>- ReBorN -</b> · AID <b>115</b> · E4K Polska 1 · hub + tracker</div>
+    <div id="status">Ładowanie…</div>
+  </header>
 
-  <div class="card">
-    <div id="summary"></div>
-    <div class="controls">
-      <label>Okno paska (min)
-        <select id="segMin">
-          <option value="5">5 min</option>
-          <option value="10" selected>10 min</option>
-          <option value="30">30 min</option>
-        </select>
-      </label>
-      <label>Zakres
-        <select id="rangeH">
-          <option value="2">ostatnie 2 h</option>
-          <option value="4">ostatnie 4 h</option>
-          <option value="6" selected>ostatnie 6 h</option>
-          <option value="12">ostatnie 12 h</option>
-          <option value="24">ostatnie 24 h</option>
-          <option value="168">ostatnie 7 dni</option>
-          <option value="720">ostatnie 30 dni</option>
-        </select>
-      </label>
-      <label>Sortuj
-        <select id="sortBy">
-          <option value="active">aktywność</option>
-          <option value="might" selected>moc</option>
-          <option value="honor">honor</option>
-          <option value="name">nick</option>
-        </select>
-      </label>
-    </div>
-    <p class="tip" id="ruleTip"></p>
-  </div>
+  <nav class="tabs" id="tabs">
+    <button type="button" data-tab="hub" class="on">Hub</button>
+    <button type="button" data-tab="tracker">Tracker RB</button>
+    <button type="button" data-tab="wywiad">Wywiad serwera</button>
+    <button type="button" data-tab="kalendarz">Kalendarz</button>
+    <button type="button" data-tab="kalk">Kalkulatory</button>
+  </nav>
 
-  <div class="card">
-    <b>🕒 Aktywność godzinowa</b> <span class="sub">(ile graczy aktywnych w danej godzinie UTC, w wybranym zakresie)</span>
-    <div class="hourgrid" id="hourGrid" style="margin-top:8px"></div>
-  </div>
-
-  <div class="card">
-    <div class="tblwrap">
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Gracz</th>
-            <th>Pasek aktywności</th>
-            <th class="r">Okna</th>
-            <th class="r">Δ Honor</th>
-            <th class="r">Δ Moc</th>
-            <th class="r">Δ Łupy</th>
-            <th class="r">Honor</th>
-            <th class="r">Moc</th>
-            <th class="r">Łupy</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
-    </div>
-    <p class="tip">
-      Pasek: lewo = starsze, prawo = najnowsze.
-      <span style="color:var(--ok)">■</span> aktywny ·
-      <span style="color:#6e7681">■</span> bez zmian ·
-      <span style="border:1px dashed #484f58;padding:0 3px">□</span> brak próbki w oknie.
-    </p>
-  </div>
-
-  <div class="card">
-    <details open>
-      <summary>Na jakiej podstawie „aktywny”? Jakie są opcje?</summary>
-      <div class="tip" style="margin-top:8px">
-        <b>Reguła (jak MD / t8.pl):</b><br>
-        Gracz jest <b>aktywny w oknie</b>, jeśli między dwiema kolejnymi próbkami w tym oknie zmienił się
-        <b>honor</b> <b>ALBO</b> <b>moc</b> <b>ALBO</b> <b>łupy (CF)</b>.<br><br>
-        <b>Źródło danych:</b> empire-api komenda <code>ain</code> (lista członków sojuszu AID 115) —
-        nie ranking grabieży lt2 (ten używa MD). Dlatego widać <b>wszystkich</b> 63 graczy RB, nie tylko top grabieży.<br><br>
-        <b>Co oznaczają zmiany:</b>
-        <ul style="margin:6px 0;padding-left:18px">
-          <li><b>Δ Honor</b> — walki / ranking honoru</li>
-          <li><b>Δ Moc ↑</b> — rekrutacja / rozwój · <b>↓</b> — straty w boju / zwolnienia</li>
-          <li><b>Δ Łupy</b> — pole CF z profilu (fame/łupy wg API; reset tygodniowy bywa skokiem)</li>
+  <section class="panel on" id="tab-hub">
+    <div class="hub">
+      <a class="cardlink" href="https://danadum.github.io/empire-rankings/" target="_blank" rel="noopener">
+        <span class="tag">ZEWNĘTRZNE</span>
+        <h3>📊 Rankingi serwerów</h3>
+        <p>danadum · empire-rankings</p>
+        <ul>
+          <li>GGE i <b>E4K</b> (przełącznik w ustawieniach)</li>
+          <li>Ranking graczy i <b>sojuszy</b> (moc, honor, eventy)</li>
+          <li>E4K PL1: <b>druga</b> „Pologne 1” = świat ReBorN</li>
+          <li>Podgląd topki bez logowania do gry</li>
         </ul>
-        <b>Opcje UI:</b>
-        <ul style="margin:6px 0;padding-left:18px">
-          <li><b>Okno paska 5 / 10 / 30 min</b> — jak długo trwa jeden segment paska (agregacja próbek)</li>
-          <li><b>Zakres 2–24 h / 7–30 dni</b> — ile historii patrzysz (wymaga zebranych punktów w <code>history.json</code>)</li>
-          <li><b>Cron GitHub</b> — próbkowanie co <b>5 min</b> (Action); GitHub bywa opóźniony 5–15+ min — to limit platformy, nie gry</li>
+      </a>
+      <a class="cardlink" href="https://generalsforum.com/simulators/battle_simulator/" target="_blank" rel="noopener">
+        <span class="tag">SYMULATOR</span>
+        <h3>⚔️ Symulator bitew</h3>
+        <p>generalsforum · battle simulator</p>
+        <ul>
+          <li>Symulacja ataku i obrony</li>
+          <li>Jednostki, narzędzia, generałowie</li>
+          <li>Test składu przed realnym atakiem</li>
         </ul>
-        <b>Historia miesięczna:</b> plik <code>history.json</code> trzyma do ~31 dni punktów. Zakres „30 dni” pokazuje aktywność z całego miesiąca (przy długim zakresie pasek ma więcej segmentów / jest zagęszczony).
+      </a>
+      <a class="cardlink" href="https://gge.t8.pl/staty/?m=ataki&w=0" target="_blank" rel="noopener">
+        <span class="tag">WYWIAD E4K PL</span>
+        <h3>🕵️ GGE Staty — cały serwer</h3>
+        <p>gge.t8.pl · szpiegowanie PL1</p>
+        <ul>
+          <li>Kto kogo atakował (honor 1:1)</li>
+          <li>Aktywność, straty, sojusze, Koło</li>
+          <li>Pełna lista → zakładka <b>Wywiad</b></li>
+        </ul>
+      </a>
+      <a class="cardlink" href="https://generalsforum.com/overviews/event_plan/" target="_blank" rel="noopener">
+        <span class="tag">KALENDARZ</span>
+        <h3>📅 Plan eventów</h3>
+        <p>generalsforum · event plan</p>
+        <ul>
+          <li>Harmonogram eventów GGE / E4K</li>
+          <li>Też w zakładce <b>Kalendarz</b></li>
+        </ul>
+      </a>
+      <a class="cardlink" href="https://generalsforum.com/calculators/travel_speed/" target="_blank" rel="noopener">
+        <span class="tag">SZCZELINA</span>
+        <h3>⏱️ Prędkość marszu / szczelina</h3>
+        <p>generalsforum · travel speed</p>
+        <ul>
+          <li>Czas dolotu wojsk</li>
+          <li>Planowanie fal (szczelina)</li>
+        </ul>
+      </a>
+      <a class="cardlink" href="https://generalsforum.com/simulators/castle_editor/" target="_blank" rel="noopener">
+        <span class="tag">ZAMEK</span>
+        <h3>🏰 Edytor zamku</h3>
+        <p>generalsforum · castle editor</p>
+        <ul>
+          <li>Układ obrony pod symulację walki</li>
+        </ul>
+      </a>
+    </div>
+  </section>
+
+  <section class="panel" id="tab-tracker">
+    <div class="card">
+      <div id="summary"></div>
+      <div class="controls">
+        <label>Okno paska (min)
+          <select id="segMin"><option value="5">5</option><option value="10" selected>10</option><option value="30">30</option></select>
+        </label>
+        <label>Zakres
+          <select id="rangeH">
+            <option value="2">2 h</option><option value="4">4 h</option><option value="6" selected>6 h</option>
+            <option value="12">12 h</option><option value="24">24 h</option><option value="168">7 dni</option><option value="720">30 dni</option>
+          </select>
+        </label>
+        <label>Sortuj
+          <select id="sortBy">
+            <option value="active">aktywność</option><option value="might" selected>moc</option>
+            <option value="honor">honor</option><option value="name">nick</option>
+          </select>
+        </label>
+        <button type="button" class="btn" id="btnRefresh">Odśwież teraz</button>
       </div>
-    </details>
-  </div>
+      <p class="tip" id="ruleTip"></p>
+    </div>
+    <div class="card">
+      <b>🕒 Aktywność godzinowa</b> <span class="sub">(UTC)</span>
+      <div class="hourgrid" id="hourGrid" style="margin-top:8px"></div>
+    </div>
+    <div class="card">
+      <div class="tblwrap">
+        <table>
+          <thead><tr>
+            <th>#</th><th>Gracz</th><th>Pasek</th><th class="r">Okna</th>
+            <th class="r">Δ Honor</th><th class="r">Δ Moc</th><th class="r">Δ Łupy</th>
+            <th class="r">Honor</th><th class="r">Moc</th><th class="r">Łupy</th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <p class="tip"><span style="color:var(--ok)">■</span> aktywny · <span style="color:#6b7280">■</span> bez zmian · □ brak próbki. Historia serwera: history.json · lokalnie: localStorage tego urządzenia.</p>
+    </div>
+  </section>
+
+  <section class="panel" id="tab-wywiad">
+    <div class="card">
+      <h3 style="margin:0 0 8px;color:var(--gold)">🕵️ GGE Staty — szpiegowanie E4K PL1</h3>
+      <p class="tip" style="margin-top:0">Moduły z <a href="https://gge.t8.pl/staty/?m=ataki&w=0" target="_blank" rel="noopener" style="color:var(--gold)">gge.t8.pl/staty</a>:</p>
+      <div class="spy-grid">
+        <a href="https://gge.t8.pl/staty/?m=rank" target="_blank" rel="noopener"><b>📊 Rankingi</b><span>Rankingi graczy na serwerze</span></a>
+        <a href="https://gge.t8.pl/staty/?m=serwery" target="_blank" rel="noopener"><b>🌍 Serwery</b><span>Lista / wybór serwerów</span></a>
+        <a href="https://gge.t8.pl/staty/?m=gracz" target="_blank" rel="noopener"><b>🔎 Szukaj gracza</b><span>Profil, moc, honor, sojusz</span></a>
+        <a href="https://gge.t8.pl/staty/?m=sojusz" target="_blank" rel="noopener"><b>🛡️ Cały sojusz</b><span>Skład sojuszu</span></a>
+        <a href="https://gge.t8.pl/staty/?m=aktyw" target="_blank" rel="noopener"><b>🟢 Aktywność (kto gra)</b><span>Kto aktywny w oknach czasu</span></a>
+        <a href="https://gge.t8.pl/staty/?m=raport" target="_blank" rel="noopener"><b>🕒 Raport sesji</b><span>Godziny + punkty sesji</span></a>
+        <a href="https://gge.t8.pl/staty/?m=straty" target="_blank" rel="noopener"><b>💥 Kto dostał</b><span>Straty mocy</span></a>
+        <a href="https://gge.t8.pl/staty/?m=kolo" target="_blank" rel="noopener"><b>🎡 Koło (armia)</b><span>Statystyki Koła / armii</span></a>
+        <a href="https://gge.t8.pl/staty/?m=kalk" target="_blank" rel="noopener"><b>⚔️ Kalkulator</b><span>Kalkulacje na t8</span></a>
+        <a href="https://gge.t8.pl/staty/?m=doradca" target="_blank" rel="noopener"><b>🛡️ Doradca obrony</b><span>Sugestie obronne</span></a>
+        <a href="https://gge.t8.pl/staty/?m=ktomnie" target="_blank" rel="noopener"><b>🕵️ Kto mnie szuka</b><span>Kto sprawdzał profil</span></a>
+        <a href="https://gge.t8.pl/staty/?m=zmiany" target="_blank" rel="noopener"><b>🔄 Zmiany (nick/sojusz)</b><span>Rename / transfery</span></a>
+        <a href="https://gge.t8.pl/staty/?m=ataki&w=0" target="_blank" rel="noopener"><b>⚔️ Kto kogo atakował</b><span>Honor 1:1 · walka / bramka / farma</span></a>
+      </div>
+      <p class="note">Ocena z chwały: ⚔️ walka · 🧤 bramka · 🌾 farma.</p>
+    </div>
+  </section>
+
+  <section class="panel" id="tab-kalendarz">
+    <div class="card">
+      <h3 style="margin:0 0 6px;color:var(--gold)">📅 Kalendarz eventów</h3>
+      <p class="tip" style="margin:0 0 8px"><a href="https://generalsforum.com/overviews/event_plan/" target="_blank" rel="noopener" style="color:var(--gold)">generalsforum.com/overviews/event_plan</a></p>
+      <p style="margin:8px 0"><a class="btn" style="display:inline-block;text-decoration:none;padding:8px 14px;border-radius:8px" href="https://generalsforum.com/overviews/event_plan/" target="_blank" rel="noopener">Otwórz w nowej karcie</a></p>
+      <div class="iframe-wrap"><iframe title="Event plan" src="https://generalsforum.com/overviews/event_plan/" loading="lazy" referrerpolicy="no-referrer"></iframe></div>
+      <p class="note">Jeśli iframe jest pusty (blokada X-Frame), użyj przycisku powyżej.</p>
+    </div>
+  </section>
+
+  <section class="panel" id="tab-kalk">
+    <div class="hub">
+      <a class="cardlink" href="https://generalsforum.com/simulators/battle_simulator/" target="_blank" rel="noopener"><h3>⚔️ Symulator bitew</h3><ul><li>Jednostki, narzędzia, generałowie</li></ul></a>
+      <a class="cardlink" href="https://generalsforum.com/calculators/travel_speed/" target="_blank" rel="noopener"><h3>⏱️ Szczelina / prędkość marszu</h3><ul><li>Czas dolotu · planowanie fal</li></ul></a>
+      <a class="cardlink" href="https://generalsforum.com/simulators/castle_editor/" target="_blank" rel="noopener"><h3>🏰 Edytor zamku</h3><ul><li>Układ obrony pod bitwę</li></ul></a>
+      <a class="cardlink" href="https://gge.t8.pl/staty/?m=kalk" target="_blank" rel="noopener"><h3>🧮 Kalkulator t8.pl</h3><ul><li>W pakiecie wywiadu PL</li></ul></a>
+      <a class="cardlink" href="https://generalsforum.com/calculators/wall_limit/" target="_blank" rel="noopener"><h3>🧱 Limit muru</h3><ul><li>Pojemność muru / wieże</li></ul></a>
+      <a class="cardlink" href="https://generalsforum.com/calculators/food_production/" target="_blank" rel="noopener"><h3>🍖 Produkcja jedzenia</h3><ul><li>Bonusy i produkcja</li></ul></a>
+    </div>
+  </section>
 </div>
 <script>
-const $ = id => document.getElementById(id);
-function fmt(n){
-  if(n==null||isNaN(n)) return '—';
-  return Math.round(n).toLocaleString('pl-PL');
-}
-function deltaCell(d){
-  if(d==null||d===0) return '<td class="r">—</td>';
-  const cls = d>0?'delta-pos':'delta-neg';
-  return `<td class="r ${cls}">${d>0?'+':''}${fmt(d)}</td>`;
-}
-function parseT(t){ return new Date(t).getTime(); }
-
-let LATEST=null, HISTORY=null;
-
+const $=id=>document.getElementById(id);
+const LS_KEY='rb_hub_v2', LS_HIST='rb_local_history_v1', REFRESH_MS=5*60*1000;
+document.querySelectorAll('nav.tabs button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('on'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+    btn.classList.add('on'); $('tab-'+btn.dataset.tab).classList.add('on');
+    try{const o=JSON.parse(localStorage.getItem(LS_KEY)||'{}');o.tab=btn.dataset.tab;localStorage.setItem(LS_KEY,JSON.stringify(o));}catch(e){}
+  });
+});
+try{const s=JSON.parse(localStorage.getItem(LS_KEY)||'{}');
+  if(s.seg)$('segMin').value=s.seg; if(s.range)$('rangeH').value=s.range; if(s.sort)$('sortBy').value=s.sort;
+  if(s.tab){const b=document.querySelector('nav.tabs button[data-tab="'+s.tab+'"]'); if(b)b.click();}
+}catch(e){}
+function fmt(n){if(n==null||isNaN(n))return'—';return Math.round(n).toLocaleString('pl-PL');}
+function deltaCell(d){if(d==null||d===0)return'<td class="r">—</td>';const c=d>0?'delta-pos':'delta-neg';return`<td class="r ${c}">${d>0?'+':''}${fmt(d)}</td>`;}
+function parseT(t){return new Date(t).getTime();}
+let LATEST=null,HISTORY=null;
+function saveLocal(latest){try{const a=JSON.parse(localStorage.getItem(LS_HIST)||'[]');a.push({t:latest.fetched_at||new Date().toISOString(),n:latest.player_count,might:latest.total_might});while(a.length>500)a.shift();localStorage.setItem(LS_HIST,JSON.stringify(a));}catch(e){}}
 async function loadAll(){
-  const [a,b] = await Promise.all([
-    fetch('latest.json?t='+Date.now()).then(r=>{ if(!r.ok) throw new Error('latest '+r.status); return r.json(); }),
-    fetch('history.json?t='+Date.now()).then(r=> r.ok ? r.json() : {points:[]}).catch(()=>({points:[]}))
-  ]);
-  LATEST=a; HISTORY=b;
-  render();
+  $('status').textContent='Odświeżanie…';
+  try{
+    const[a,b]=await Promise.all([
+      fetch('latest.json?t='+Date.now()).then(r=>{if(!r.ok)throw new Error('latest '+r.status);return r.json();}),
+      fetch('history.json?t='+Date.now()).then(r=>r.ok?r.json():{points:[]}).catch(()=>({points:[]}))
+    ]);
+    LATEST=a;HISTORY=b;saveLocal(a);render();
+    const when=a.fetched_at?new Date(a.fetched_at).toLocaleString('pl-PL'):'?';
+    $('status').textContent=`Snapshot: ${when} · hist: ${(b.points||[]).length} · auto 5 min · cache OK`;
+  }catch(e){$('status').textContent='Błąd: '+e.message;}
 }
-
-function buildWindows(points, rangeH, segMin){
-  const now = Date.now();
-  const from = now - rangeH*3600*1000;
-  const segMs = segMin*60*1000;
-  // lista okien [start, end)
-  const windows=[];
-  let t0 = Math.floor(from/segMs)*segMs;
-  while(t0 + segMs <= now + 1000){
-    windows.push({start:t0, end:t0+segMs});
-    t0 += segMs;
-  }
-  // punkty w zakresie, posortowane
-  const pts = (points||[])
-    .map(p=>({t:parseT(p.t), p:p.p||{}}))
-    .filter(p=>!isNaN(p.t) && p.t >= from - segMs)
-    .sort((a,b)=>a.t-b.t);
-
-  return {windows, pts, from, now};
+function buildWindows(points,rangeH,segMin){
+  const now=Date.now(),from=now-rangeH*3600*1000,segMs=segMin*60*1000,windows=[];
+  let t0=Math.floor(from/segMs)*segMs;while(t0+segMs<=now+1000){windows.push({start:t0,end:t0+segMs});t0+=segMs;}
+  const pts=(points||[]).map(p=>({t:parseT(p.t),p:p.p||{}})).filter(p=>!isNaN(p.t)&&p.t>=from-segMs).sort((a,b)=>a.t-b.t);
+  return{windows,pts,from,now};
 }
-
-/** czy w oknie [start,end) była aktywność gracza oid */
-function windowActive(pts, oid, start, end){
-  // próbki w oknie + ostatnia przed oknem (bazowa)
-  let before=null;
-  const inWin=[];
-  for(const pt of pts){
-    if(pt.t < start) before=pt;
-    else if(pt.t < end) inWin.push(pt);
-  }
-  if(!inWin.length) return 'miss'; // brak próbki
-  let prev = before && before.p[oid] ? before.p[oid] : null;
-  // jeśli nie ma before, pierwsza w oknie nie generuje aktywności (brak odniesienia)
-  for(const pt of inWin){
-    const cur = pt.p[oid];
-    if(!cur) continue;
-    if(prev){
-      if(cur[0]!==prev[0] || cur[1]!==prev[1] || cur[2]!==prev[2]) return 'on';
-    }
-    prev = cur;
-  }
-  return prev ? 'off' : 'miss';
+function windowActive(pts,oid,start,end){
+  let before=null;const inWin=[];
+  for(const pt of pts){if(pt.t<start)before=pt;else if(pt.t<end)inWin.push(pt);}
+  if(!inWin.length)return'miss';
+  let prev=before&&before.p[oid]?before.p[oid]:null;
+  for(const pt of inWin){const cur=pt.p[oid];if(!cur)continue;if(prev&&(cur[0]!==prev[0]||cur[1]!==prev[1]||cur[2]!==prev[2]))return'on';prev=cur;}
+  return prev?'off':'miss';
 }
-
-function rangeDelta(pts, oid, from, now){
-  let first=null, last=null;
-  for(const pt of pts){
-    const v = pt.p[oid];
-    if(!v) continue;
-    if(pt.t >= from && pt.t <= now){
-      if(!first) first=v;
-      last=v;
-    }
-  }
-  if(!first||!last) return {h:null,m:null,l:null};
-  return {h:last[0]-first[0], m:last[1]-first[1], l:last[2]-first[2]};
+function rangeDelta(pts,oid,from,now){
+  let first=null,last=null;
+  for(const pt of pts){const v=pt.p[oid];if(!v)continue;if(pt.t>=from&&pt.t<=now){if(!first)first=v;last=v;}}
+  if(!first||!last)return{h:null,m:null,l:null};
+  return{h:last[0]-first[0],m:last[1]-first[1],l:last[2]-first[2]};
 }
-
 function render(){
-  if(!LATEST) return;
-  const segMin = +$('segMin').value;
-  const rangeH = +$('rangeH').value;
-  const sortBy = $('sortBy').value;
-  const points = (HISTORY && HISTORY.points) || [];
-  const {windows, pts, from, now} = buildWindows(points, rangeH, segMin);
-
-  const when = LATEST.fetched_at ? new Date(LATEST.fetched_at).toLocaleString('pl-PL') : '?';
-  $('status').textContent = `Snapshot: ${when} · historia: ${points.length} punktów · okno ${segMin} min · zakres ${rangeH} h`;
-
-  // per player activity
-  const rows = (LATEST.players||[]).map(p=>{
-    const oid = String(p.oid);
-    const flags = windows.map(w => windowActive(pts, oid, w.start, w.end));
-    const activeCount = flags.filter(f=>f==='on').length;
-    const d = rangeDelta(pts, oid, from, now);
-    return {p, oid, flags, activeCount, d};
+  if(!LATEST)return;
+  const segMin=+$('segMin').value,rangeH=+$('rangeH').value,sortBy=$('sortBy').value;
+  try{localStorage.setItem(LS_KEY,JSON.stringify({tab:document.querySelector('nav.tabs button.on')?.dataset.tab||'hub',seg:segMin,range:rangeH,sort:sortBy}));}catch(e){}
+  const points=(HISTORY&&HISTORY.points)||[];
+  const{windows,pts,from,now}=buildWindows(points,rangeH,segMin);
+  const rows=(LATEST.players||[]).map(p=>{
+    const oid=String(p.oid);const flags=windows.map(w=>windowActive(pts,oid,w.start,w.end));
+    return{p,oid,flags,activeCount:flags.filter(f=>f==='on').length,d:rangeDelta(pts,oid,from,now)};
   });
-
   rows.sort((a,b)=>{
-    if(sortBy==='active') return b.activeCount - a.activeCount || b.p.might - a.p.might;
-    if(sortBy==='honor') return b.p.honor - a.p.honor;
-    if(sortBy==='name') return (a.p.name||'').localeCompare(b.p.name||'');
-    return b.p.might - a.p.might;
+    if(sortBy==='active')return b.activeCount-a.activeCount||b.p.might-a.p.might;
+    if(sortBy==='honor')return b.p.honor-a.p.honor;
+    if(sortBy==='name')return(a.p.name||'').localeCompare(b.p.name||'');
+    return b.p.might-a.p.might;
   });
-
-  const activePlayers = rows.filter(r=>r.activeCount>0).length;
-  $('summary').innerHTML = `
-    <span class="pill">${LATEST.player_count||rows.length} graczy</span>
-    <span class="pill ok">🟢 ${activePlayers} aktywnych w zakresie</span>
-    <span class="pill">${fmt(LATEST.total_might)} mocy</span>
-    <span class="pill">AID ${LATEST.aid||115}</span>
-    <span class="pill warn">${points.length} próbek w historii</span>`;
-
-  $('ruleTip').textContent = LATEST.activity_rule ||
-    'Aktywny = zmiana honoru LUB mocy LUB łupów między próbkami w oknie.';
-
-  // hour grid
-  const hourHits = {};
-  for(let h=0;h<24;h++) hourHits[h]=0;
-  // for each hour, count distinct players active in any window overlapping that hour
-  for(const r of rows){
-    const seenHour = new Set();
-    windows.forEach((w,i)=>{
-      if(r.flags[i]!=='on') return;
-      const h = new Date(w.start).getUTCHours();
-      seenHour.add(h);
-    });
-    seenHour.forEach(h => { hourHits[h] = (hourHits[h]||0)+1; });
-  }
-  $('hourGrid').innerHTML = Array.from({length:24},(_,h)=>`
-    <div><div class="h">${String(h).padStart(2,'0')}</div><div class="v">${hourHits[h]||'·'}</div></div>`).join('');
-
-  // max bars to show (mobile) — if too many, sample
-  let displayFlags = (r)=>r.flags;
-  const maxBars = 48;
-  if(windows.length > maxBars){
-    // group: already windows are segMin; if still too many, show every n-th and note
-    const step = Math.ceil(windows.length / maxBars);
-    displayFlags = (r)=> r.flags.filter((_,i)=>i%step===0);
-  }
-
-  $('tbody').innerHTML = rows.map((r,idx)=>{
-    const flags = displayFlags(r);
-    const bar = `<span class="bar" title="${r.activeCount} aktywnych okien">${flags.map(f=>
-      f==='on'?'<i class="on"></i>':f==='miss'?'<i class="miss"></i>':'<i></i>'
-    ).join('')}</span>`;
-    const mark = r.activeCount>0 ? '🟢' : '⚪';
-    return `<tr>
-      <td>${idx+1}</td>
-      <td>${mark} <b>${r.p.name||'?'}</b></td>
-      <td>${bar}</td>
-      <td class="r">${r.activeCount}</td>
-      ${deltaCell(r.d.h)}
-      ${deltaCell(r.d.m)}
-      ${deltaCell(r.d.l)}
-      <td class="r">${fmt(r.p.honor)}</td>
-      <td class="r">${fmt(r.p.might)}</td>
-      <td class="r">${fmt(r.p.loot_current)}</td>
-    </tr>`;
+  $('summary').innerHTML=`<span class="pill">${LATEST.player_count||rows.length} graczy</span><span class="pill ok">🟢 ${rows.filter(r=>r.activeCount>0).length} aktywnych</span><span class="pill">${fmt(LATEST.total_might)} mocy</span><span class="pill warn">${points.length} próbek</span>`;
+  $('ruleTip').textContent=LATEST.activity_rule||'Aktywny = zmiana honoru / mocy / łupów w oknie.';
+  const hourHits={};for(let h=0;h<24;h++)hourHits[h]=0;
+  for(const r of rows){const seen=new Set();windows.forEach((w,i)=>{if(r.flags[i]==='on')seen.add(new Date(w.start).getUTCHours());});seen.forEach(h=>hourHits[h]++);}
+  $('hourGrid').innerHTML=Array.from({length:24},(_,h)=>`<div><div class="h">${String(h).padStart(2,'0')}</div><div class="v">${hourHits[h]||'·'}</div></div>`).join('');
+  const step=windows.length>48?Math.ceil(windows.length/48):1;
+  $('tbody').innerHTML=rows.map((r,idx)=>{
+    const flags=r.flags.filter((_,i)=>i%step===0);
+    const bar=`<span class="bar">${flags.map(f=>f==='on'?'<i class="on"></i>':f==='miss'?'<i class="miss"></i>':'<i></i>').join('')}</span>`;
+    return`<tr><td>${idx+1}</td><td>${r.activeCount>0?'🟢':'⚪'} <b>${r.p.name||'?'}</b></td><td>${bar}</td><td class="r">${r.activeCount}</td>${deltaCell(r.d.h)}${deltaCell(r.d.m)}${deltaCell(r.d.l)}<td class="r">${fmt(r.p.honor)}</td><td class="r">${fmt(r.p.might)}</td><td class="r">${fmt(r.p.loot_current)}</td></tr>`;
   }).join('');
 }
-
-['segMin','rangeH','sortBy'].forEach(id => $(id).addEventListener('change', render));
-loadAll().catch(e => { $('status').textContent = 'Błąd: '+e.message; });
+['segMin','rangeH','sortBy'].forEach(id=>$(id).addEventListener('change',render));
+$('btnRefresh').addEventListener('click',loadAll);
+loadAll(); setInterval(loadAll, REFRESH_MS);
 </script>
 </body>
 </html>

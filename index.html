@@ -85,7 +85,7 @@ function deltaCell(d){
 async function load(){
   const status = document.getElementById('status');
   try{
-    const res = await fetch('data/latest.json?t='+Date.now());
+    const res = await fetch('latest.json?t='+Date.now());
     if(!res.ok) throw new Error('HTTP '+res.status);
     const data = await res.json();
     const prev = data.prev_players || {};
@@ -128,7 +128,7 @@ async function load(){
       </tr>`;
     }).join('');
   }catch(e){
-    status.textContent = 'Błąd ładowania data/latest.json: '+e.message;
+    status.textContent = 'Błąd ładowania latest.json: '+e.message;
   }
 }
 load();

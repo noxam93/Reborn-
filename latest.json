@@ -3,15 +3,15 @@
   "aid": 115,
   "server": "EmpirefourkingdomsExGG2_3",
   "server_label": "E4K Polska 1",
-  "fetched_at": "2026-10-21T11:08:04.226527+00:00",
+  "fetched_at": "2026-10-21T11:40:35.959171+00:00",
   "player_count": 65,
-  "total_might": 5116883989,
+  "total_might": 5142898817,
   "players": [
     {
       "oid": 273782,
       "name": "Dark_Imperator",
       "honor": 1977,
-      "might": 330433204,
+      "might": 330438844,
       "loot_current": 2094113663,
       "loot_highest": 13164031243,
       "level": 70,
@@ -21,7 +21,7 @@
       "oid": 271439,
       "name": "Gerg",
       "honor": 1701,
-      "might": 259196206,
+      "might": 259197790,
       "loot_current": 519371797,
       "loot_highest": 4348162649,
       "level": 70,
@@ -50,8 +50,8 @@
     {
       "oid": 1718275,
       "name": ".Wini7.",
-      "honor": 1736,
-      "might": 230148142,
+      "honor": 1752,
+      "might": 230153356,
       "loot_current": 1423315938,
       "loot_highest": 7084556565,
       "level": 70,
@@ -71,7 +71,7 @@
       "oid": 983615,
       "name": "Raven333",
       "honor": 2444,
-      "might": 226116913,
+      "might": 226118353,
       "loot_current": 489061208,
       "loot_highest": 5540524813,
       "level": 70,
@@ -81,7 +81,7 @@
       "oid": 1255555,
       "name": "KAZELOT",
       "honor": 1097,
-      "might": 169877265,
+      "might": 169877985,
       "loot_current": 78837232,
       "loot_highest": 1930189553,
       "level": 70,
@@ -91,7 +91,7 @@
       "oid": 1774409,
       "name": "Nathalie93",
       "honor": 1071,
-      "might": 161462430,
+      "might": 161466470,
       "loot_current": 34102323,
       "loot_highest": 2900370740,
       "level": 70,
@@ -101,7 +101,7 @@
       "oid": 1834428,
       "name": "Wojtas2137",
       "honor": 2015,
-      "might": 148522193,
+      "might": 148523873,
       "loot_current": 40209293,
       "loot_highest": 1177354123,
       "level": 70,
@@ -111,9 +111,19 @@
       "oid": 173692,
       "name": "luki",
       "honor": 632,
-      "might": 123811733,
+      "might": 124562839,
       "loot_current": 11003844,
       "loot_highest": 670889714,
+      "level": 70,
+      "legend": 950
+    },
+    {
+      "oid": 1679328,
+      "name": "Sopelo",
+      "honor": 2078,
+      "might": 119353648,
+      "loot_current": 322042666,
+      "loot_highest": 1068462629,
       "level": 70,
       "legend": 950
     },
@@ -131,7 +141,7 @@
       "oid": 888925,
       "name": "gwid",
       "honor": 1660,
-      "might": 116978931,
+      "might": 116979525,
       "loot_current": 2885990,
       "loot_highest": 1293943968,
       "level": 70,
@@ -151,7 +161,7 @@
       "oid": 1295460,
       "name": "VanKord 2.0",
       "honor": 885,
-      "might": 102248022,
+      "might": 102233255,
       "loot_current": 4150285220,
       "loot_highest": 9440793923,
       "level": 70,
@@ -161,19 +171,9 @@
       "oid": 1417454,
       "name": "Bolesław chrobr",
       "honor": 1653,
-      "might": 100775372,
+      "might": 100775972,
       "loot_current": 88896773,
       "loot_highest": 4154522381,
-      "level": 70,
-      "legend": 950
-    },
-    {
-      "oid": 1679328,
-      "name": "Sopelo",
-      "honor": 2078,
-      "might": 94328163,
-      "loot_current": 322042666,
-      "loot_highest": 1068462629,
       "level": 70,
       "legend": 950
     },
@@ -191,7 +191,7 @@
       "oid": 1878344,
       "name": "-BLACK REAPER-",
       "honor": 1282,
-      "might": 93498118,
+      "might": 93499438,
       "loot_current": 214482340,
       "loot_highest": 926366514,
       "level": 70,
@@ -211,7 +211,7 @@
       "oid": 1197230,
       "name": "kappa123",
       "honor": 1007,
-      "might": 88793044,
+      "might": 88793770,
       "loot_current": 317418547,
       "loot_highest": 393245322,
       "level": 70,
@@ -221,7 +221,7 @@
       "oid": 332746,
       "name": "-LUCEK-",
       "honor": 1883,
-      "might": 88298172,
+      "might": 88298532,
       "loot_current": 872447359,
       "loot_highest": 2316772826,
       "level": 70,
@@ -261,7 +261,7 @@
       "oid": 1727679,
       "name": "Napoleon",
       "honor": 1436,
-      "might": 71409138,
+      "might": 71410062,
       "loot_current": 130062206,
       "loot_highest": 752485932,
       "level": 70,
@@ -271,7 +271,7 @@
       "oid": 1848844,
       "name": "grzes83",
       "honor": 1845,
-      "might": 70298905,
+      "might": 70299535,
       "loot_current": 595062311,
       "loot_highest": 1367446594,
       "level": 70,
@@ -311,7 +311,7 @@
       "oid": 1834928,
       "name": "-Izud-Jacek-",
       "honor": 1386,
-      "might": 58861427,
+      "might": 58861907,
       "loot_current": 1963492,
       "loot_highest": 676591224,
       "level": 70,
@@ -321,7 +321,7 @@
       "oid": 1153991,
       "name": "N0R",
       "honor": 1623,
-      "might": 58348978,
+      "might": 58349374,
       "loot_current": 90052160,
       "loot_highest": 987705852,
       "level": 70,
@@ -331,7 +331,7 @@
       "oid": 60811,
       "name": "jarek 31",
       "honor": 2114,
-      "might": 56345317,
+      "might": 56346037,
       "loot_current": 1149214044,
       "loot_highest": 1276904493,
       "level": 70,
@@ -350,8 +350,8 @@
     {
       "oid": 1847009,
       "name": "Włóczykij",
-      "honor": 1158,
-      "might": 55070127,
+      "honor": 1229,
+      "might": 55069742,
       "loot_current": 528892524,
       "loot_highest": 587658360,
       "level": 70,
@@ -371,7 +371,7 @@
       "oid": 1940528,
       "name": "Cesarz Julisz1",
       "honor": 1207,
-      "might": 53768798,
+      "might": 53766631,
       "loot_current": 752102644,
       "loot_highest": 1523534997,
       "level": 70,
@@ -391,7 +391,7 @@
       "oid": 535240,
       "name": "Placek78",
       "honor": 1580,
-      "might": 44438630,
+      "might": 44439092,
       "loot_current": 138181232,
       "loot_highest": 459682283,
       "level": 70,
@@ -401,8 +401,8 @@
       "oid": 1751146,
       "name": "Tottenham 1882",
       "honor": 1194,
-      "might": 43275014,
-      "loot_current": 26397556,
+      "might": 43468869,
+      "loot_current": 27340000,
       "loot_highest": 427315074,
       "level": 70,
       "legend": 950
@@ -451,7 +451,7 @@
       "oid": 1936378,
       "name": "Tango",
       "honor": 1083,
-      "might": 38228712,
+      "might": 38226443,
       "loot_current": 744776643,
       "loot_highest": 1160041919,
       "level": 70,
@@ -461,7 +461,7 @@
       "oid": 1856395,
       "name": "VERIKAS",
       "honor": 1175,
-      "might": 36733847,
+      "might": 36734573,
       "loot_current": 2195446,
       "loot_highest": 216981224,
       "level": 70,
@@ -481,7 +481,7 @@
       "oid": 1806100,
       "name": "kiler171",
       "honor": 1196,
-      "might": 33184754,
+      "might": 33185018,
       "loot_current": 4127407,
       "loot_highest": 329117158,
       "level": 70,
@@ -491,7 +491,7 @@
       "oid": 1915987,
       "name": "Ciuciek1984",
       "honor": 848,
-      "might": 33090673,
+      "might": 33091597,
       "loot_current": 402400405,
       "loot_highest": 582614531,
       "level": 70,
@@ -501,7 +501,7 @@
       "oid": 235098,
       "name": "HEVE",
       "honor": 738,
-      "might": 29133258,
+      "might": 29133918,
       "loot_current": 637654,
       "loot_highest": 100427160,
       "level": 70,
@@ -511,7 +511,7 @@
       "oid": 230756,
       "name": "Piotus",
       "honor": 1124,
-      "might": 26023061,
+      "might": 26023069,
       "loot_current": 419263015,
       "loot_highest": 941541676,
       "level": 70,
@@ -531,7 +531,7 @@
       "oid": 1230550,
       "name": "Baobab",
       "honor": 1222,
-      "might": 21670774,
+      "might": 21672214,
       "loot_current": 185347145,
       "loot_highest": 328035365,
       "level": 70,
@@ -541,7 +541,7 @@
       "oid": 1772369,
       "name": "radziollo",
       "honor": 1504,
-      "might": 21375480,
+      "might": 21376110,
       "loot_current": 444381424,
       "loot_highest": 701503124,
       "level": 70,
@@ -551,7 +551,7 @@
       "oid": 1170944,
       "name": "hrabia Piotr",
       "honor": 1347,
-      "might": 20297057,
+      "might": 20297651,
       "loot_current": 665551941,
       "loot_highest": 963110244,
       "level": 70,
@@ -561,7 +561,7 @@
       "oid": 644336,
       "name": "FRYDKA",
       "honor": 1665,
-      "might": 17661444,
+      "might": 17657469,
       "loot_current": 2552300,
       "loot_highest": 353607742,
       "level": 70,
@@ -591,7 +591,7 @@
       "oid": 511724,
       "name": "Monik...",
       "honor": 1691,
-      "might": 12300586,
+      "might": 12317746,
       "loot_current": 63307618,
       "loot_highest": 1688699156,
       "level": 70,
@@ -621,7 +621,7 @@
       "oid": 1818825,
       "name": "Toruń główny",
       "honor": 1250,
-      "might": 6761434,
+      "might": 6777934,
       "loot_current": 177077711,
       "loot_highest": 285949097,
       "level": 70,
@@ -641,7 +641,7 @@
       "oid": 1950953,
       "name": "oj Pawel",
       "honor": 1365,
-      "might": 2859583,
+      "might": 2861092,
       "loot_current": 320719621,
       "loot_highest": 320719621,
       "level": 70,
@@ -661,12 +661,12 @@
   "prev_players": {
     "273782": {
       "honor": 1977,
-      "might": 330427564,
+      "might": 330433204,
       "loot_current": 2094113663
     },
     "271439": {
       "honor": 1701,
-      "might": 259194622,
+      "might": 259196206,
       "loot_current": 519371797
     },
     "145184": {
@@ -681,7 +681,7 @@
     },
     "1718275": {
       "honor": 1736,
-      "might": 230143390,
+      "might": 230148142,
       "loot_current": 1423315938
     },
     "173914": {
@@ -691,27 +691,27 @@
     },
     "983615": {
       "honor": 2444,
-      "might": 226105243,
+      "might": 226116913,
       "loot_current": 489061208
     },
     "1255555": {
       "honor": 1097,
-      "might": 169876065,
+      "might": 169877265,
       "loot_current": 78837232
     },
     "1774409": {
       "honor": 1071,
-      "might": 161733486,
+      "might": 161462430,
       "loot_current": 34102323
     },
     "1834428": {
       "honor": 2015,
-      "might": 148521353,
+      "might": 148522193,
       "loot_current": 40209293
     },
     "173692": {
       "honor": 632,
-      "might": 120781769,
+      "might": 123811733,
       "loot_current": 11003844
     },
     "30359": {
@@ -721,7 +721,7 @@
     },
     "888925": {
       "honor": 1660,
-      "might": 116978271,
+      "might": 116978931,
       "loot_current": 2885990
     },
     "340001": {
@@ -731,17 +731,17 @@
     },
     "1295460": {
       "honor": 885,
-      "might": 102402930,
-      "loot_current": 4059632602
+      "might": 102248022,
+      "loot_current": 4150285220
     },
     "1417454": {
       "honor": 1653,
-      "might": 100774772,
+      "might": 100775372,
       "loot_current": 88896773
     },
     "1679328": {
       "honor": 2078,
-      "might": 94327415,
+      "might": 94328163,
       "loot_current": 322042666
     },
     "140466": {
@@ -751,7 +751,7 @@
     },
     "1878344": {
       "honor": 1282,
-      "might": 93497656,
+      "might": 93498118,
       "loot_current": 214482340
     },
     "53340": {
@@ -761,12 +761,12 @@
     },
     "1197230": {
       "honor": 1007,
-      "might": 88791284,
+      "might": 88793044,
       "loot_current": 317418547
     },
     "332746": {
       "honor": 1883,
-      "might": 88297722,
+      "might": 88298172,
       "loot_current": 872447359
     },
     "1598120": {
@@ -786,12 +786,12 @@
     },
     "1727679": {
       "honor": 1436,
-      "might": 71415928,
+      "might": 71409138,
       "loot_current": 130062206
     },
     "1848844": {
       "honor": 1845,
-      "might": 70298185,
+      "might": 70298905,
       "loot_current": 595062311
     },
     "26911": {
@@ -811,26 +811,26 @@
     },
     "1834928": {
       "honor": 1386,
-      "might": 58861067,
+      "might": 58861427,
       "loot_current": 1963492
     },
     "1153991": {
       "honor": 1623,
-      "might": 58345546,
+      "might": 58348978,
       "loot_current": 90052160
     },
     "60811": {
       "honor": 2114,
-      "might": 56322007,
+      "might": 56345317,
       "loot_current": 1149214044
     },
     "222651": {
       "honor": 429,
-      "might": 55744854,
+      "might": 55744304,
       "loot_current": 37283815
     },
     "1847009": {
-      "honor": 1091,
+      "honor": 1158,
       "might": 55070127,
       "loot_current": 528892524
     },
@@ -841,17 +841,22 @@
     },
     "1940528": {
       "honor": 1207,
-      "might": 53771757,
+      "might": 53768798,
       "loot_current": 752102644
     },
     "854121": {
       "honor": 1690,
-      "might": 51441067,
+      "might": 51440067,
       "loot_current": 77034430
+    },
+    "535240": {
+      "honor": 1580,
+      "might": 44438630,
+      "loot_current": 138181232
     },
     "1751146": {
       "honor": 1194,
-      "might": 43222049,
+      "might": 43275014,
       "loot_current": 26397556
     },
     "1259980": {
@@ -876,38 +881,33 @@
     },
     "1936378": {
       "honor": 1083,
-      "might": 38231376,
+      "might": 38228712,
       "loot_current": 744776643
     },
     "1856395": {
       "honor": 1175,
-      "might": 36733121,
+      "might": 36733847,
       "loot_current": 2195446
     },
     "1870884": {
       "honor": 1229,
-      "might": 33326842,
+      "might": 33326848,
       "loot_current": 469027624
     },
     "1806100": {
       "honor": 1196,
-      "might": 33184490,
+      "might": 33184754,
       "loot_current": 4127407
     },
     "1915987": {
       "honor": 848,
-      "might": 33089749,
+      "might": 33090673,
       "loot_current": 402400405
     },
     "235098": {
       "honor": 738,
-      "might": 29132004,
+      "might": 29133258,
       "loot_current": 637654
-    },
-    "535240": {
-      "honor": 1580,
-      "might": 28258462,
-      "loot_current": 138181232
     },
     "230756": {
       "honor": 1124,
@@ -921,23 +921,23 @@
     },
     "1230550": {
       "honor": 1222,
-      "might": 21669334,
+      "might": 21670774,
       "loot_current": 185347145
     },
     "1772369": {
       "honor": 1504,
-      "might": 21374130,
+      "might": 21375480,
       "loot_current": 444381424
     },
     "1170944": {
       "honor": 1347,
-      "might": 20296463,
+      "might": 20297057,
       "loot_current": 665551941
     },
     "644336": {
       "honor": 1665,
       "might": 17661444,
-      "loot_current": 2604388
+      "loot_current": 2552300
     },
     "1836535": {
       "honor": 672,
@@ -951,7 +951,7 @@
     },
     "511724": {
       "honor": 1691,
-      "might": 12297286,
+      "might": 12300586,
       "loot_current": 63307618
     },
     "1813640": {
@@ -961,7 +961,7 @@
     },
     "1345366": {
       "honor": 1368,
-      "might": 11274214,
+      "might": 11352349,
       "loot_current": 39205113
     },
     "1818825": {
@@ -976,7 +976,7 @@
     },
     "1950953": {
       "honor": 1365,
-      "might": 2857989,
+      "might": 2859583,
       "loot_current": 320719621
     },
     "146502": {
@@ -985,6 +985,6 @@
       "loot_current": 4389
     }
   },
-  "history_points": 1336,
+  "history_points": 1337,
   "activity_rule": "Aktywny w oknie = zmiana honoru LUB mocy LUB łupów (CF) między dwiema kolejnymi próbkami w tym oknie. Źródło: empire-api ain (skład sojuszu), nie ranking grabieży lt2."
 }
